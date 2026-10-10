@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Andreas Penal Code | IME RolePlay & MotionLife Database</title>
+  <meta name="description" content="Database Resmi Penal Code San Andreas (IME Roleplay / MotionLife) lengkap dengan kalkulator dakwaan MDT, definisi hukum, klasifikasi senjata, dan denda pidana.">
+  <meta name="theme-color" content="#090d16">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="top-navbar" id="top-navbar">
+    <div class="nav-container">
+      
+      <!-- Brand Section -->
+      <div class="brand-section">
+        <div class="brand-logo-badge" title="State of San Andreas Department of Justice">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.54-3.14 8.79-7 9.88-3.86-1.09-7-5.34-7-9.88V6.3l7-3.12zm-1 5v6h2v-6h-2zm0 8v2h2v-2h-2z"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>
+            <span>SAN ANDREAS PENAL CODE</span>
+            <span class="brand-badge">IME RP 2026</span>
+          </h1>
+          <div class="brand-subtitle" id="brand-dept-text">DEPARTEMEN KEHAKIMAN & KEPOLISIAN</div>
+        </div>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="search-wrapper">
+        <span class="search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input-box" 
+          placeholder="Cari nomor pasal, nama kejahatan, kata kunci, denda..." 
+          autocomplete="off"
+        >
+        <span class="search-shortcut-hint">Ctrl + K</span>
+      </div>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Language Switcher -->
+        <button class="btn-nav" id="btn-lang-toggle" title="Ganti Bahasa / Switch Language">
+          <span id="lang-btn-text">🇮🇩 IDN</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="btn-nav" id="btn-theme-toggle" title="Ganti Tema / Toggle Theme">
+          <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- MDT Arrest Calculator Trigger -->
+        <button class="btn-nav btn-nav-primary" id="btn-open-docket">
+          <span>⚖️</span>
+          <span>MDT Docket</span>
+          <span class="cart-count-badge" id="cart-count-badge" style="display:none;">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero-banner">
+    <div class="hero-grid">
+      <div class="hero-info">
+        <h2 id="hero-title-text">San Andreas Penal Code</h2>
+        <p id="hero-subtitle-text">
+          Database Hukum Pidana & Kalkulator Dakwaan Resmi untuk IME & MotionLife RolePlay.
+        </p>
+      </div>
+
+      <!-- Quick Metrics Counters -->
+      <div class="stats-card-group">
+        <div class="stat-chip">
+          <span class="stat-value" id="stat-val-total">244</span>
+          <span class="stat-label" id="stat-label-total">Total Pasal</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-value felony" id="stat-val-felony">136</span>
+          <span class="stat-label" id="stat-label-felony">Felony</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-value misdemeanor" id="stat-val-misdemeanor">89</span>
+          <span class="stat-label" id="stat-label-misdemeanor">Misdemeanor</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-value infraction" id="stat-val-infraction">19</span>
+          <span class="stat-label" id="stat-label-infraction">Infraction</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION TABS -->
+  <nav class="section-nav-tabs">
+    <button class="nav-tab-item active" id="tab-btn-articles" data-tab="tab-articles">
+      <span>📜</span> Daftar Pasal (Penal Articles)
+    </button>
+    <button class="nav-tab-item" id="tab-btn-calculator" data-tab="tab-calculator">
+      <span>⚖️</span> Kalkulator Dakwaan (MDT)
+    </button>
+    <button class="nav-tab-item" id="tab-btn-chapters" data-tab="tab-chapters">
+      <span>📖</span> Definisi & Doktrin (Bab 1-9)
+    </button>
+    <button class="nav-tab-item" id="tab-btn-weapons" data-tab="tab-weapons">
+      <span>🔫</span> Klasifikasi Senjata
+    </button>
+    <button class="nav-tab-item" id="tab-btn-procedures" data-tab="tab-procedures">
+      <span>👮</span> SOP & Prosedur (Title 10-12)
+    </button>
+  </nav>
+
+  <!-- MAIN WRAPPER -->
+  <main class="main-wrapper">
+
+    <!-- TAB 1: ARTICLES VIEW -->
+    <div class="tab-pane active" id="tab-articles">
+      
+      <!-- Filter Toolbar -->
+      <div class="filter-toolbar">
+        <div class="filter-group-left">
+          <button class="filter-badge-btn active" id="filter-btn-all" data-cat="all">Semua Kategori</button>
+          <button class="filter-badge-btn btn-felony" id="filter-btn-felony" data-cat="Felony">Felony</button>
+          <button class="filter-badge-btn btn-misdemeanor" id="filter-btn-misdemeanor" data-cat="Misdemeanor">Misdemeanor</button>
+          <button class="filter-badge-btn btn-infraction" id="filter-btn-infraction" data-cat="Infraction">Infraction</button>
+          
+          <!-- Title Selector Dropdown -->
+          <select id="select-title-filter" class="select-title-filter">
+            <option value="all">Semua Bab (Title 0-9)</option>
+          </select>
+        </div>
+
+        <div class="filter-group-right">
+          <!-- View Mode (Grid vs Table) -->
+          <button class="view-toggle-btn active" id="btn-view-grid" title="Tampilan Kotak (Grid)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </button>
+          <button class="view-toggle-btn" id="btn-view-table" title="Tampilan Tabel (List)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Layout: Sidebar Navigation + Articles Stream -->
+      <div class="content-grid-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="title-nav-sidebar">
+          <div class="sidebar-heading">Daftar Bab / Titles</div>
+          <ul class="title-nav-list" id="title-nav-list">
+            <!-- Dynamically populated -->
+          </ul>
+        </aside>
+
+        <!-- Articles Stream -->
+        <section class="articles-stream" id="articles-render-container">
+          <!-- Dynamically populated -->
+        </section>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: CALCULATOR (MDT DOCKET) - IN-PAGE VIEW -->
+    <div class="tab-pane" id="tab-calculator">
+      <div style="background:var(--bg-card); border-radius:var(--radius-xl); border:1px solid var(--border-glass); padding:2rem; max-width:900px; margin:0 auto; box-shadow:var(--shadow-card);">
+        <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+          <span>⚖️</span> MDT Charge & Arrest Calculator
+        </h3>
+        <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+          Kalkulator penahanan dan denda ini juga dapat diakses kapan saja melalui tombol <strong>MDT Docket</strong> di bar atas.
+        </p>
+        <button class="btn-nav btn-nav-primary" onclick="document.getElementById('btn-open-docket').click()" style="padding:0.75rem 1.5rem; font-size:1rem;">
+          Buka Panel Kalkulator Lengkap →
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 3: CHAPTERS & DOCTRINES -->
+    <div class="tab-pane" id="tab-chapters">
+      <div class="chapter-accordion-group" id="chapters-render-container">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+
+    <!-- TAB 4: WEAPONS REFERENCE -->
+    <div class="tab-pane" id="tab-weapons">
+      <div class="weapon-classes-grid" id="weapons-render-container">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+
+    <!-- TAB 5: SOP & SPECIAL PROCEDURES -->
+    <div class="tab-pane" id="tab-procedures">
+      <div id="procedures-render-container">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- CALCULATOR DRAWER (SLIDE-OVER PANEL) -->
+  <div class="calculator-drawer-overlay" id="calculator-drawer-overlay">
+    <div class="calculator-drawer">
+      
+      <!-- Drawer Header -->
+      <div class="drawer-header">
+        <h3 id="drawer-title-text">
+          <span>⚖️</span> MDT Arrest Docket
+        </h3>
+        <button class="btn-drawer-close" id="btn-close-docket" title="Tutup">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Drawer Body -->
+      <div class="drawer-body">
+        
+        <!-- Metadata Form -->
+        <div class="docket-meta-grid">
+          <div class="form-field">
+            <label id="label-suspect-name" for="docket-suspect-name">Nama Tersangka</label>
+            <input type="text" id="docket-suspect-name" class="form-input" placeholder="Contoh: Marcus Vance">
+          </div>
+          <div class="form-field">
+            <label id="label-officer-sign" for="docket-officer-sign">Petugas / Call Sign</label>
+            <input type="text" id="docket-officer-sign" class="form-input" placeholder="Contoh: 1L-04 / John Doe">
+          </div>
+        </div>
+
+        <!-- Added Charges Container -->
+        <div class="charges-container" id="charges-container">
+          <!-- Populated by app.js -->
+        </div>
+
+        <!-- Modifiers Box -->
+        <div class="modifiers-box">
+          <h4 id="modifiers-title-text">Faktor Pemberat & Pengurang</h4>
+          <label class="checkbox-label">
+            <input type="checkbox" id="mod-gang">
+            <span id="label-mod-gang">Keterlibatan Geng (+15 Bulan, +$20,000)</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="mod-resisting">
+            <span id="label-mod-resisting">Melawan Petugas / Resisting (+10 Bulan, +$15,000)</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="mod-repeat">
+            <span id="label-mod-repeat">Pelaku Berulang (+25% Penjara & Denda)</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="mod-plea">
+            <span id="label-mod-plea">Plea Deal / Mengaku Bersalah (-25% Penjara)</span>
+          </label>
+        </div>
+
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="drawer-footer">
+        
+        <!-- Calculation Summary Card -->
+        <div class="summary-card">
+          <div class="summary-row">
+            <span class="summary-label" id="summary-label-time">Total Kurungan Penjara</span>
+            <span class="summary-val time" id="summary-val-time">0 Bulan</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label" id="summary-label-fine">Total Denda</span>
+            <span class="summary-val fine" id="summary-val-fine">$0</span>
+          </div>
+          
+          <div class="court-alert-banner" id="court-alert-banner" style="display:none;">
+            ⚠️ Perhatian: Terdapat dakwaan dengan ancaman Hukuman Mati atau Sidang Pengadilan (HUT).
+          </div>
+        </div>
+
+        <div class="drawer-actions-grid">
+          <button class="btn-action-docket primary" id="btn-copy-mdt-report">
+            📋 Salin Laporan MDT
+          </button>
+          <button class="btn-action-docket secondary" onclick="window.print()">
+            🖨️ Cetak / PDF
+          </button>
+        </div>
+
+        <button class="btn-clear-docket" id="btn-clear-docket">
+          Kosongkan Semua Dakwaan
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ARTICLE DETAIL MODAL -->
+  <div class="modal-overlay" id="article-detail-modal">
+    <div class="modal-dialog">
+      
+      <div class="modal-header">
+        <div class="modal-header-text">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.35rem;">
+            <span class="article-code-pill" id="modal-code-pill">(1)01</span>
+            <span class="category-tag" id="modal-category-tag">Felony</span>
+          </div>
+          <h3 id="modal-title-text">Nama Pelanggaran</h3>
+        </div>
+        <button class="btn-drawer-close" id="btn-close-modal" title="Tutup">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div>
+          <div class="modal-section-title">Deskripsi Lengkap Pelanggaran</div>
+          <div class="modal-desc-box" id="modal-desc-box"></div>
+        </div>
+
+        <div>
+          <div class="modal-section-title">Sanksi Berdasarkan Ketentuan Hukum</div>
+          <div class="modal-penalty-box" id="modal-penalty-box"></div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-nav btn-nav-primary" id="btn-modal-add-docket">
+          + Tambah ke Kalkulator Dakwaan
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div style="font-weight:700; color:var(--text-main); font-size:1rem;">
+        State of San Andreas Penal Code Database & MDT Terminal
+      </div>
+      <div>
+        Edisi Resmi IME RolePlay & MotionLife RolePlay | Dirancang untuk Kemudahan Kepolisian, Kejaksaan (DOJ), Advokat, dan Warga Sipil.
+      </div>
+      <div style="font-size:0.75rem; color:var(--text-dim); margin-top:0.5rem;">
+        Pintasan Keyboard: Tekan <code style="background:var(--bg-card); padding:2px 6px; border-radius:4px; font-family:var(--font-mono);">Ctrl + K</code> atau <code style="background:var(--bg-card); padding:2px 6px; border-radius:4px; font-family:var(--font-mono);">/</code> untuk mencari | <code style="background:var(--bg-card); padding:2px 6px; border-radius:4px; font-family:var(--font-mono);">Esc</code> untuk menutup jendela
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="penalcode_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
